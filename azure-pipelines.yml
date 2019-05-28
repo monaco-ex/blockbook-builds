@@ -1,6 +1,9 @@
 trigger:
 - master
 
+variables:
+  tag: v0.3.0
+
 jobs:
 - job: Build
   timeoutInMinutes: 0
@@ -10,7 +13,7 @@ jobs:
 
   steps:
   - script: |
-      git clone https://github.com/trezor/blockbook.git
+      git clone https://github.com/trezor/blockbook.git -b $(tag)
     displayName: Cloning Blockblock repository.
 
   - script: |

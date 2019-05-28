@@ -1,0 +1,23 @@
+trigger:
+- master
+
+jobs:
+- job: Build
+  timeoutInMinutes: 0
+
+  pool:
+    vmImage: 'Ubuntu-16.04'
+
+  steps:
+  - script: |
+      git clone https://github.com/trezor/blockbook.git
+    displayName: Cloning Blockblock repository.
+
+  - script: |
+      make all
+    workingDirectory: blockbook
+    displayName: Building
+
+  - task: PublishPipelineArtifact@0
+    inputs:
+      targetPath: blockbook/build/

@@ -17,11 +17,6 @@ jobs:
     displayName: Cloning Blockblock repository.
 
   - script: |
-      rm -f configs/coins/monetaryunit.json
-    workingDirectory: blockbook
-    displayName: Removing unreliable coins.
-
-  - script: |
       make all
     workingDirectory: blockbook
     displayName: Building
